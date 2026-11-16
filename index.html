@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yamo Hub | Catalogue</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Ton fichier CSS personnalisé -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- SDK Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- SEO & Métadonnées de base -->
+    <meta
+      name="description"
+      content="Découvrez Yamo Hub, la vitrine en ligne pour explorer et commander facilement vos articles à Ouagadougou."
+    />
+
+    <!-- Open Graph (Pour de beaux partages sur WhatsApp et Facebook) -->
+    <meta
+      property="og:title"
+      content="Yamo Hub | Catalogue & Commandes à Ouagadougou"
+    />
+    <meta
+      property="og:description"
+      content="Parcourez le catalogue en temps réel et commandez en un clic sur WhatsApp."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="URL_DE_TON_LOGO_OU_IMAGE" />
+    <meta property="og:url" content="https://yamo-hub.vercel.app" />
+    <meta
+      name="google-site-verification"
+      content="HUWqT_N2rbHKXM9pD-LGutzf-4kgMwQ1GF1VqaY3OAg"
+    />
+  </head>
+  <body class="bg-gray-50 text-gray-900 font-sans pb-24">
+    <!-- En-tête -->
+    <header
+      class="bg-white shadow-sm sticky top-0 z-40 border-b border-gray-100"
+    >
+      <div class="max-w-md mx-auto px-4 py-4 flex justify-between items-center">
+        <div>
+          <h1 class="font-bold text-lg text-gray-900">Yamo Hub</h1>
+          <p class="text-xs text-green-600 font-medium">
+            ● Ouvert - Commandes en direct
+          </p>
+        </div>
+        <!-- Badge Panier -->
+        <button
+          id="cart-toggle-btn"
+          class="relative bg-gray-900 text-white px-3 py-2 rounded-full text-xs font-semibold flex items-center gap-1 shadow-md"
+        >
+          🛒 Panier
+          <span
+            id="cart-count"
+            class="bg-red-500 text-white rounded-full px-1.5 py-0.2 text-[10px]"
+            >0</span
+          >
+        </button>
+      </div>
+    </header>
+
+    <!-- Filtres par catégorie -->
+    <nav
+      id="category-filters"
+      class="max-w-md mx-auto px-4 py-3 flex gap-2 overflow-x-auto no-scrollbar"
+    >
+      <button
+        data-category="all"
+        class="cat-btn active px-4 py-1.5 rounded-full text-xs font-medium bg-gray-900 text-white whitespace-nowrap transition"
+      >
+        Tout
+      </button>
+      <button
+        data-category="Sacoches"
+        class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200 whitespace-nowrap transition"
+      >
+        Sacoches
+      </button>
+      <button
+        data-category="Maillots"
+        class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200 whitespace-nowrap transition"
+      >
+        Maillots
+      </button>
+
+      <button
+        data-category="Vêtements"
+        class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200 whitespace-nowrap transition"
+      >
+        Vêtements
+      </button>
+      <button
+        data-category="Chaussures"
+        class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium bg-white text-gray-700 border border-gray-200 whitespace-nowrap transition"
+      >
+        Chaussures
+      </button>
+    </nav>
+
+    <!-- Grille des Produits -->
+    <main class="max-w-md mx-auto px-4 py-2">
+      <div id="products-grid" class="grid grid-cols-2 gap-3">
+        <div class="col-span-2 text-center py-12 text-gray-400 text-sm">
+          Chargement des articles...
+        </div>
+      </div>
+    </main>
+
+    <!-- Panier fixe en bas (Flottant) -->
+    <div
+      id="cart-drawer"
+      class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-xl p-4 max-w-md mx-auto rounded-t-2xl z-50 transition-transform duration-300 transform translate-y-full"
+    >
+      <div class="flex justify-between items-center mb-2">
+        <h2 class="font-bold text-sm">Votre Panier</h2>
+        <button
+          id="cart-close-btn"
+          class="text-xs text-gray-400 hover:text-gray-600"
+        >
+          Fermer ✕
+        </button>
+      </div>
+      <div
+        id="cart-items"
+        class="max-h-36 overflow-y-auto divide-y divide-gray-100 mb-3 text-xs"
+      >
+        <p class="text-gray-400 text-center py-4">Votre panier est vide</p>
+      </div>
+      <div
+        class="flex justify-between items-center font-bold text-sm mb-3 pt-2 border-t border-gray-100"
+      >
+        <span>Total :</span>
+        <span id="cart-total" class="text-blue-600">0 FCFA</span>
+      </div>
+      <button
+        id="checkout-btn"
+        class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-green-600/20 transition"
+      >
+        📲 Commander via WhatsApp
+      </button>
+    </div>
+
+    <!-- Ton fichier JavaScript -->
+    <script src="js/app.js"></script>
+  </body>
+</html>

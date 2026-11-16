@@ -1,0 +1,29 @@
+/* Masquer la scrollbar sur les filtres horizontaux tout en gardant le défilement tactile */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE et Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Animation fluide pour l'apparition des cartes produits */
+.product-card {
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#netlify-deploy-badge,
+[data-netlify-deploy-badge] {
+  display: none !important;
+}
